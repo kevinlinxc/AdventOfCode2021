@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+build/
+cmake-build-debug/
+gradle/
+gradle
+gradlew.bat
