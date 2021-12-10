@@ -27,6 +27,4 @@ for row_index, row in enumerate(rows):
 
 
 print(risk)
-
-
-
+#516

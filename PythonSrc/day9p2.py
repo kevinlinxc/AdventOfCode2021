@@ -30,23 +30,23 @@ basin_sizes = []
 def search(basin):
     new_basin = basin.copy()
     for spot in basin:
-        #check left
         row_index = spot[0]
         col_index = spot[1]
+        #check up
         if row_index != 0:
-            if rows[row_index-1][col_index] != 9 and (row_index-1, col_index) not in basin:
+            if rows[row_index-1][col_index] != '9' and (row_index-1, col_index) not in basin:
                 new_basin.add((row_index-1, col_index))
-
+        #check down
         if row_index != height:
-            if rows[row_index+1][col_index] !=9  and (row_index+1, col_index) not in basin:
+            if rows[row_index+1][col_index] !='9'  and (row_index+1, col_index) not in basin:
                 new_basin.add((row_index+1, col_index))
-
+        #check left
         if col_index != 0:
-            if rows[row_index][col_index-1] != 9 and (row_index, col_index - 1) not in basin:
+            if rows[row_index][col_index-1] != '9' and (row_index, col_index - 1) not in basin:
                 new_basin.add((row_index, col_index - 1))
-
+        #check_right
         if col_index != width:
-            if  rows[row_index][col_index+1] != 9 and (row_index, col_index + 1) not in basin:
+            if  rows[row_index][col_index+1] != '9' and (row_index, col_index + 1) not in basin:
                 new_basin.add((row_index, col_index+1))
 
     return new_basin
@@ -66,9 +66,12 @@ for low_point in low_points:
     print(f"low_point {low_point} has basin_size {basin_size}")
 
 print(basin_sizes)
+answer = 1
+for i in range(3):
+    largest = max(basin_sizes)
+    answer *= largest
+    basin_sizes.pop(basin_sizes.index(largest))
+    print(largest)
 
-
-
-
-
-
+print(answer)
+#1023660

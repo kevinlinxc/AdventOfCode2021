@@ -16,3 +16,8 @@ familiarity with C++ and Java.
 ### Day 5 (Python): [Part 1](PythonSrc/day5.py), [Part 2](PythonSrc/day5p2.py)
 ### Day 6 (Python): [Part 1](PythonSrc/day6.py), [Part 2](PythonSrc/day6p2.py)
 ### Day 7 (Python): [Part 1](PythonSrc/day7.py), [Part 2](PythonSrc/day7p2.py)
+### Day 8 (Python): [Part 1](PythonSrc/day8.py), [Part 2](PythonSrc/day8p2.py)
+
+# Wait it's all Python? Always has been
+### Day 9 (Python): [Part 1](PythonSrc/day9.py), [Part 2](PythonSrc/day9p2.py)
+### Day 10 (Python): [Part 1](PythonSrc/day10.py), [Part 2](PythonSrc/day10p2.py)
