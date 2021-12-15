@@ -1,3 +1,4 @@
+# tags: hard, insert, exponential
 file1 = open('inputs\day14.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

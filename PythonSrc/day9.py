@@ -1,3 +1,4 @@
+# risk, matrix, 2d
 file1 = open('inputs\day9.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

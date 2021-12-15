@@ -1,3 +1,4 @@
+# tags: stack, brackets, parentheses
 file1 = open('inputs\day10.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

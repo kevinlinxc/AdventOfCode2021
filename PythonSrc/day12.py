@@ -1,3 +1,4 @@
+# tags: bfs, graph, search
 file1 = open('inputs\day12.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

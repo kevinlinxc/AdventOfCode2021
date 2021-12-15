@@ -1,3 +1,4 @@
+# tags: octopus, flash, sublist
 file1 = open('inputs\day11.txt', 'r')
 lines = file1.readlines()
 rows = []

@@ -1,3 +1,4 @@
+# tag 7-segment display,
 file1 = open('inputs\day8.txt', 'r')
 Lines = file1.readlines()
 print(Lines)

@@ -1,3 +1,4 @@
+# tags: folding, matplotlib in part 2
 file1 = open('inputs\day13.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
