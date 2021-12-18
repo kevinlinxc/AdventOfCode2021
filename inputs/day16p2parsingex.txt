@@ -1,0 +1,10 @@
+operator: equals
+operator: sum
+literal: 1
+literal: 3
+end subpackets
+operator: product
+literal: 2
+literal: 2
+end subpackets
+end subpackets
