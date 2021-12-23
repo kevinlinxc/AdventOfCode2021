@@ -21,4 +21,9 @@ familiarity with C++ and Java.
 # Wait it's all Python? Always has been
 ### Day 9 (Python): [Part 1](PythonSrc/day9.py), [Part 2](PythonSrc/day9p2.py)
 ### Day 10 (Python): [Part 1](PythonSrc/day10.py), [Part 2](PythonSrc/day10p2.py)
-### Day 11 (Python): [Part 1](PythonSrc/day11.py), [Part 2](PythonSrc/1.py)
+### Day 11 (Python): [Part 1](PythonSrc/day11.py), [Part 2](PythonSrc/day11p2.py)
+### Day 12 (Python): [Part 1](PythonSrc/day12.py), [Part 2](PythonSrc/day12p2.py)
+### Day 13 (Python): [Part 1](PythonSrc/day13.py), [Part 2](PythonSrc/day13p2.py)
+### Day 14 (Python): [Part 1](PythonSrc/day14.py), [Part 2](PythonSrc/day14p2.py)
+### Day 15 (Python): [Part 1](PythonSrc/day15.py), [Part 2](PythonSrc/day15p2.py)
+### Day 16 (Python): [Part 1](PythonSrc/day16.py), [Part 2](PythonSrc/day16p2.py)

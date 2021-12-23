@@ -13,7 +13,7 @@ for row in rows:
 print(f"Operators: {operator_count}, ends: {end_count}")
 operator_stack = deque()
 numbers_stack = deque()
-numbers_stack.append([])
+# numbers_stack.append([])
 # 0: "sum",
 # 1: "product",
 # 2: "minimum",
@@ -63,11 +63,13 @@ for row in rows:
             else:
                 new_value = 0
 
-
-        next_list = numbers_stack.pop()
+        try:
+            next_list = numbers_stack.pop()
+        except:
+            pass
         next_list.append(new_value)
         numbers_stack.append(next_list)
         if len(list(numbers_stack)) == 1:
             print(numbers_stack)
 
-# print(numbers_stack)
+print(numbers_stack)

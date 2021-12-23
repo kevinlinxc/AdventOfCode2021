@@ -10,7 +10,6 @@ operator: sum
 literal: 121
 literal: 21236
 end subpackets
-end subpackets
 operator: product
 operator: greater_than
 operator: sum
@@ -23,8 +22,8 @@ literal: 7
 literal: 10
 literal: 7
 end subpackets
-literal: 32566
 end subpackets
+literal: 32566
 end subpackets
 operator: product
 operator: less_than
@@ -326,6 +325,8 @@ literal: 12
 literal: 5
 literal: 14
 end subpackets
+end subpackets
+end subpackets
 operator: product
 literal: 4494263
 operator: equals
@@ -339,16 +340,14 @@ literal: 3
 literal: 3
 literal: 14
 end subpackets
+end subpackets
+end subpackets
 operator: product
 operator: less_than
 literal: 45
 literal: 3307915
 end subpackets
 literal: 58514
-end subpackets
-end subpackets
-end subpackets
-end subpackets
 end subpackets
 operator: product
 literal: 3596530693
@@ -362,6 +361,7 @@ operator: sum
 literal: 9
 literal: 11
 literal: 2
+end subpackets
 end subpackets
 end subpackets
 end subpackets
