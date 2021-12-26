@@ -1,3 +1,4 @@
+# put poiunts that are turned on into a dict and remove if its off. Takes too long to iterate over points.
 file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

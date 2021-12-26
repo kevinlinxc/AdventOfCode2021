@@ -1,3 +1,5 @@
+# idea of adding all points that will be turned on to a list and then applying transformations to every point
+# ideally faster, but still way too slow with O(n^3)
 file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]

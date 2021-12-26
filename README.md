@@ -29,6 +29,8 @@ familiarity with C++ and Java.
 ### Day 16 (Python): [Part 1](PythonSrc/day16.py), [Part 2](PythonSrc/day16p2.py)
 ### Day 17 (Python): [Part 1](PythonSrc/day17.py), [Part 2](PythonSrc/day17p2.py)
 <--
-lots of pain and suffering
+sobbing
 -->
 ### Day 20 (Python): [Part 1](PythonSrc/day20.py), [Part 2](PythonSrc/day20p2.py)
+### Day 21 (Python): [Part 1](PythonSrc/day21.py), [Part 2](PythonSrc/day21p2.py)
+### Day 22 (Python): [Part 1](PythonSrc/day22.py)

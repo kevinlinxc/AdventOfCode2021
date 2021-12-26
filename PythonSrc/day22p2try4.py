@@ -1,3 +1,5 @@
+# approach of adding and subtracting volumes. Wrong because iterating over cuboids adds too much volume
+# and too hard because calculating resulting cuboids is difficult
 file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -65,11 +67,5 @@ for t in transformations:
         # check for intersection with existing ons, find difference, subtract volume. Find non intersecting part of old cubes and keep them, removing
         # old complete cuboids
         for cuboid in cuboids_c:
-
-
-
-
-
-
-
+            pass
 
