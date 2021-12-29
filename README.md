@@ -34,3 +34,6 @@ sobbing
 ### Day 20 (Python): [Part 1](PythonSrc/day20.py), [Part 2](PythonSrc/day20p2.py)
 ### Day 21 (Python): [Part 1](PythonSrc/day21.py), [Part 2](PythonSrc/day21p2.py)
 ### Day 22 (Python): [Part 1](PythonSrc/day22.py)
+
+### Day 24 (Python): [Part 1 and Part 2](PythonSrc/day24try4.py.py)
+### Day 25 (Python): [Part 1](PythonSrc/day25.py)
