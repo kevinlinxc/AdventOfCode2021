@@ -1,4 +1,5 @@
-# tried a lot of brute force variations until day24try4 and day24try5 together got me across the line with some pen and paper
+# Validating a model number using an assembly algorithm. Ended up decompiling it by hand using pen and paper and using
+# a GUI to test out numbers (day24try4 for GUI, day24try5 for decompiled function)
 file1 = open('inputs\day24.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -8,6 +9,7 @@ x = 0
 y = 0
 z = 0
 counter = 0
+
 
 def check_model_number(input, thread_name):
     inputs = list(input)
@@ -70,9 +72,12 @@ def check_model_number(input, thread_name):
             print(f"{thread_name} {input} is NOT a valid model number, z = {z}")
         return False
 
+
 f = open("inputs\day24outputreal.txt", "a")
 
 max_model_num = 0
+
+
 def run_from(ceiling, thread_name):
     for i in range(ceiling, 11111311662335, -1):
         string_num = str(i)
@@ -82,17 +87,19 @@ def run_from(ceiling, thread_name):
                 f.write(str(i))
                 exit(0)
 
+
 from multiprocessing import Process
 
-#past progress:
-#9999998457476
-#9999986895698
-#9999985427378
-#9999963749661
-#9999962628649
-#9999952983773
-#9999946745883
-#9999938614332
+
+# past progress:
+# 9999998457476
+# 9999986895698
+# 9999985427378
+# 9999963749661
+# 9999962628649
+# 9999952983773
+# 9999946745883
+# 9999938614332
 def main():
     threads = []
     for x in range(9):
@@ -110,9 +117,8 @@ def main():
             t.join()
         print("threads successfully closed")
 
+
 if __name__ == '__main__':
     main()
-
-
 
 print(f"Hi {max_model_num}")

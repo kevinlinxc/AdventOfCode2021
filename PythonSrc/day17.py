@@ -1,3 +1,5 @@
+# Kinematics. Launch object with initial velocity and see max y for part 1. In part 2, find how many initial velocities
+# will be in target zone.
 target_y_min = -89
 target_y_max = -59
 target_x_min = 192
@@ -9,6 +11,7 @@ def position_in_target(x, y):
         return True
     return False
 
+
 max_y_ever = float("-inf")
 max_y_init = (0, 0)
 for init_x in range(1000):
@@ -18,14 +21,14 @@ for init_x in range(1000):
         pos_x = 0
         pos_y = 0
         max_y_this_run = 0
-        while pos_x <= target_x_max and pos_y >=target_y_min:
+        while pos_x <= target_x_max and pos_y >= target_y_min:
             pos_x += speed_x
             pos_y += speed_y
             max_y_this_run = max(max_y_this_run, pos_y)
             if speed_x >= 1:
-                speed_x -=1
+                speed_x -= 1
             elif speed_x <= -1:
-                speed_x+=1
+                speed_x += 1
             speed_y -= 1
             if position_in_target(pos_x, pos_y):
                 if max_y_this_run > max_y_ever:
@@ -35,4 +38,4 @@ for init_x in range(1000):
 
 print(max_y_ever)
 print(max_y_init)
-#3916
+# 3916

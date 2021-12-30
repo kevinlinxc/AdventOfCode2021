@@ -29,6 +29,7 @@ def expand(picture, exterior):
     new_pic.append(exterior * new_row_width)
     return new_pic
 
+
 def augment_picture(picture, i):
     if i % 2 == 0:
         exterior = "."
@@ -49,8 +50,9 @@ def augment_picture(picture, i):
             new_row += new_pixel
         new_row += next_exterior
         output_picture.append(new_row)
-    output_picture.append(next_exterior *new_width)
+    output_picture.append(next_exterior * new_width)
     return output_picture
+
 
 times = 50
 

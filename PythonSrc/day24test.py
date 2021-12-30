@@ -7,6 +7,7 @@ x = 0
 y = 0
 z = 0
 
+
 def check_model_number(inputs):
     global w
     w = 0
@@ -58,6 +59,7 @@ def check_model_number(inputs):
             else:
                 globals()[left] = 1 if globals()[left] == int(globals()[right]) else 0
 
-    return "".join([str(w), str(x),str(y), str(z)])
+    return "".join([str(w), str(x), str(y), str(z)])
+
 
 print(check_model_number([15]))

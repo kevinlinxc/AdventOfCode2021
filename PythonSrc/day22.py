@@ -1,3 +1,5 @@
+# Turn reactor cuboids on and off following instructions and see which are on. In part 2, huge cuboid sections
+# that increase runtime beyond imagination
 file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -52,7 +54,7 @@ for index, transformation in enumerate(transformations):
 counter = 0
 for point in points:
     if point.on:
-        counter+=1
+        counter += 1
 
 print(counter)
-#644257
+# 644257

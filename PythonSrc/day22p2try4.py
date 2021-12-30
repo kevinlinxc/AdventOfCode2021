@@ -28,6 +28,7 @@ for row in rows:
 
 from dataclasses import dataclass
 
+
 @dataclass()
 class cuboid:
     xmin: int
@@ -44,8 +45,7 @@ class cuboid:
         return (self.xmax - self.xmin) * (self.ymax - self.ymin) * (self.zmax - self.zmin)
 
 
-
-on_cuboids = [] # none of the cuboids in this list shall be overlapping
+on_cuboids = []  # none of the cuboids in this list shall be overlapping
 volume = 0
 for t in transformations:
     new_cuboid = cuboid(t.xmin, t.xmax, t.ymin, t.ymax, t.zmin, t.zmax)
@@ -68,4 +68,3 @@ for t in transformations:
         # old complete cuboids
         for cuboid in cuboids_c:
             pass
-

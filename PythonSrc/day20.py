@@ -1,3 +1,5 @@
+# A line defines how a convolution kernel maps to the next pixel. Repeat several times and the grid is infinite in
+# every direction. Turns out to be conway's game of life. Part 2 is higher iterations
 file1 = open('inputs\day20.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -28,6 +30,7 @@ def expand(picture, exterior):
     new_pic.append(exterior * new_row_width)
     return new_pic
 
+
 def augment_picture(picture, i):
     if i % 2 == 0:
         exterior = "."
@@ -48,8 +51,9 @@ def augment_picture(picture, i):
             new_row += new_pixel
         new_row += next_exterior
         output_picture.append(new_row)
-    output_picture.append(next_exterior *new_width)
+    output_picture.append(next_exterior * new_width)
     return output_picture
+
 
 times = 2
 

@@ -23,14 +23,16 @@ class AmphipodHallway:
 
     class room:
         def __init__(self, state, intended):
-            assert len(state) == 2
+            assert len(state) == 4
             self.intended = intended
             self.state = state
             self.top_slot = state[0]
-            self.bottom_slot = state[1]
+            self.top_mid_slot = state[1]
+            self.bottom_mid_slot = state[2]
+            self.bottom_slot = state[3]
 
         def __repr__(self):
-            return f"{self.top_slot}, {self.bottom_slot}"
+            return f"{self.top_slot}, {self.top_mid_slot}, {self.bottom_mid_slot}, {self.bottom_slot}"
 
         def is_open(self):
             counter = 0
@@ -41,20 +43,6 @@ class AmphipodHallway:
                 if current not in [nothing_char, self.intended]:
                     return 0
             return counter
-
-        # def wants_to_move(self):
-        #     if self.top_slot == self.intended and self.bottom_slot == self.intended:
-        #         return False, None
-        #     elif self.bottom_slot == self.intended and self.top_slot == nothing_char:
-        #         return False, None
-        #     elif self.bottom_slot == nothing_char and self.top_slot == nothing_char:
-        #         return False, None
-        #     elif self.bottom_slot == self.intended and self.top_slot != self.intended:
-        #         return True, 0
-        #     elif self.bottom_slot != self.intended and self.top_slot == nothing_char:
-        #         return True, 1
-        #     elif self.bottom_slot != self.intended and self.top_slot != nothing_char:
-        #         return True, 0
 
         def wants_to_move(self):
             state_list = list(self.state)
@@ -252,4 +240,3 @@ def print_hallway(path):
 for node in path.nodes:
     print("---------------------")
     print_hallway(node)
-# 18501

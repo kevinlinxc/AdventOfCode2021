@@ -1,14 +1,17 @@
 # tags: stack, brackets, parentheses
+# checking for bad brackets and how to complete incomplete brackets. Basically just use a stack.
+from collections import deque
 file1 = open('inputs\day10.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
 print(rows)
-from collections import deque
-points = { ")": 3,
-           "]": 57,
-           "}": 1197,
-           ">": 25137
-        }
+
+points = {")": 3,
+          "]": 57,
+          "}": 1197,
+          ">": 25137
+          }
+
 
 def matching_bracket(bracket):
     if bracket == "{":
@@ -22,6 +25,7 @@ def matching_bracket(bracket):
     else:
         return "alsjdlkfajsdf"
 
+
 start_brackets = {"(", "[", "{", "<"}
 whatever = deque()
 
@@ -34,11 +38,9 @@ for row in rows:
             next_to_pop = whatever.pop()
             expected = matching_bracket(next_to_pop)
             if bracket != expected:
-                error_score+= points[bracket]
+                error_score += points[bracket]
                 print(f"Adding {points[bracket]} for illegal")
                 break
 
-
-
 print(error_score)
-#392367
+# 392367

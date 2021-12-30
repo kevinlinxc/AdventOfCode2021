@@ -6,4 +6,4 @@ for item in rows:
     counter += int(item)
 
 print(counter)
-#886
+# 886

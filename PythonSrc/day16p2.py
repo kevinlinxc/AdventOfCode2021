@@ -48,6 +48,7 @@ def literal(binary, index, values):
 
 
 from collections import deque
+
 operator_stack = deque()
 
 
@@ -83,6 +84,7 @@ def operate(operator, latest_list):
         else:
             new_value = 0
     return new_value
+
 
 def read_packet(binary, number_of_subpackets=None, target_length=None):
     index = 0
@@ -128,7 +130,7 @@ def read_packet(binary, number_of_subpackets=None, target_length=None):
                 if debug:
                     print(binary[index:])
                 index_increment, value = read_packet(binary[index:],
-                                              target_length=total_length)
+                                                     target_length=total_length)
 
                 index += index_increment
                 values.append(value)

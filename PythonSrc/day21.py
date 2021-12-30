@@ -1,19 +1,24 @@
-
+# Roll deterministic die for part 1 in a 10 peg game. In Part 2, roll quantum die and see in how many universes
+# Player 1 wins and how many player 2 wins.
 counter = 0
+
 
 def deterministic_die():
     global counter
     counter += 1
     return (counter - 1) % 100 + 1
 
+
 def three_dice_throws():
     return deterministic_die() + deterministic_die() + deterministic_die()
+
 
 def new_position(current, roll):
     result = (current + roll) % 10
     if result == 0:
         result = 10
     return result
+
 
 # starting positions
 player1 = 6

@@ -1,17 +1,15 @@
+import itertools
 file1 = open('inputs\day19.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
-import itertools
-
-
 
 
 def config(points, id):
     new_points = []
     for point in points:
-        x, y , z = (int(i) for i in point)
+        x, y, z = (int(i) for i in point)
         # no one look at this code thanks
-        state = id//3
+        state = id // 3
         if state % 8 == 0:
             pass
         elif state % 8 == 1:
@@ -37,11 +35,11 @@ def config(points, id):
         new_points.append((x, y, z))
     return new_points
 
+
 class scanner:
     def __init__(self, id):
         self.id = id
         self.points = []
-
 
     def add_point(self, list):
         self.points.append((list[0], list[1], list[2]))
@@ -63,11 +61,10 @@ class scanner:
         return return_list
 
 
-
-
 current = None
 list_of_scanners = []
 import re
+
 for row in rows:
     if row:
         match = re.match("--- scanner ([0-9]*) ---", row)
@@ -77,13 +74,12 @@ for row in rows:
         else:
             current.add_point(row.split(","))
 
-
 new_scanners = {}
 figured_out_scanners = {0}
 current_diffs = list_of_scanners[0].diffs(list_of_scanners[0].points)
 while new_scanners != figured_out_scanners:
     new_scanners = figured_out_scanners
-    for i in range(1, len(list_of_scanners)-1):
+    for i in range(1, len(list_of_scanners) - 1):
         if i in figured_out_scanners:
             continue
         scanner = list_of_scanners[i]
@@ -100,8 +96,4 @@ while new_scanners != figured_out_scanners:
                         figured_out_scanners.add(i)
                         break
 
-
 print(list_of_scanners)
-
-
-

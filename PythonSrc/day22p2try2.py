@@ -3,6 +3,7 @@ file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
 
+
 class transformation:
     def __init__(self, row):
         self.on = True if row.split(" ")[0] == "on" else False
@@ -36,7 +37,8 @@ class reactor_cube:
         self.z = z
 
     def __hash__(self):
-        return self.x*2 + self.y*3 + self.z*5
+        return self.x * 2 + self.y * 3 + self.z * 5
+
 
 points_that_are_on = dict()
 
@@ -55,10 +57,10 @@ for index, transformation in enumerate(transformations):
             if transformation.xmin <= point[0] <= transformation.xmax and \
                     transformation.ymin <= point[1] <= transformation.ymax and \
                     transformation.zmin <= point[2] <= transformation.zmax:
-                    points_that_are_on[point] = points_that_are_on.get(point, 0) - 1
+                points_that_are_on[point] = points_that_are_on.get(point, 0) - 1
 
-counter= 0
+counter = 0
 for point in points_that_are_on:
-    if points_that_are_on[point] %2 == 1:
-        counter+=1
+    if points_that_are_on[point] % 2 == 1:
+        counter += 1
 print(counter)

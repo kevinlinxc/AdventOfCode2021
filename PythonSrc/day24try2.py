@@ -1,4 +1,5 @@
-# in this attempt I try to create a single formula for z that python could execute quickly, but it turns out it was really slow and needed more optimized
+# in this attempt I try to create a single formula for z that python could execute quickly,
+# but it turns out it was really slow and needed more optimized
 file1 = open('inputs\day24.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -8,7 +9,6 @@ x = "0"
 y = "0"
 z = "0"
 inputs = ["in1", "in2", "in3", "in4", "in5", "in6", "in7", "in8", "in9", "in10", "in11", "in12", "in13", "in14"]
-
 
 
 def read_monad(inputs):
@@ -69,8 +69,8 @@ def read_monad(inputs):
 
 wf, xf, yf, zf = read_monad(inputs)
 
-#11111111111111
-#11111111177632
+# 11111111111111
+# 11111111177632
 # 11111169364264
 # 11111311662335
 # print(f"w: {wf}")
@@ -91,4 +91,3 @@ f.write(zf)
 #     print("After")
 #     global ret
 #     print(ret)
-

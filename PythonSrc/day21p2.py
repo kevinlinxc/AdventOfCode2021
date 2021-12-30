@@ -1,11 +1,9 @@
-
 counter = 0
-
-
 
 # starting positions
 player1 = 6
 player2 = 8
+
 
 def new_position(current, roll):
     result = (current + roll) % 10
@@ -13,9 +11,11 @@ def new_position(current, roll):
         result = 10
     return result
 
+
 goal = 21
 
 from functools import cache
+
 
 @cache
 def get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num, roll_total):
@@ -24,9 +24,12 @@ def get_wins_and_losses(player1, player2, score1, score2, current_player, roll_n
     print(f"Running with {player1}, {player2}, {score1}, {score2}, {current_player}, {roll_num}, {roll_total}")
 
     if roll_num != 3:
-        wins11, wins12 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1, roll_total + 1)
-        wins21, wins22 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1, roll_total + 2)
-        wins31, wins32 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1, roll_total + 3)
+        wins11, wins12 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1,
+                                             roll_total + 1)
+        wins21, wins22 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1,
+                                             roll_total + 2)
+        wins31, wins32 = get_wins_and_losses(player1, player2, score1, score2, current_player, roll_num + 1,
+                                             roll_total + 3)
         p1wins += wins11 + wins21 + wins31
         p2wins += wins12 + wins22 + wins32
     else:

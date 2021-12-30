@@ -6,6 +6,7 @@ lines2 = file2.readlines()
 rows = [(line.strip()) for line in lines]
 rows2 = [(line.strip()) for line in lines2]
 import streamlit
+
 w = 0
 x = 0
 y = 0
@@ -14,8 +15,10 @@ counter = 0
 
 input_offsets = [10, 5, 12, 12, 6, 4, 15, 3, 7, 11, 2, 12, 4, 11]
 
+
 def offset_input(index, inputs):
     return int(inputs[index]) + input_offsets[index]
+
 
 def check_model_number_unparsed(input):
     inputs = list(input)
@@ -42,7 +45,7 @@ def check_model_number_unparsed(input):
     cond5 = z11 % 26 - 13 == int(inputs[11])
     m5 = 1 if cond5 else 26
     z12 = z11 // 26 * m5 + offset_input(11, inputs) * int(not cond5)
-    #cond6 = (int(inputs[1]) + int(inputs[3]) + int(inputs[5]) + int(inputs[7]) + int(inputs[11]) + 10) % 26 - 12 == int(inputs[12])
+    # cond6 = (int(inputs[1]) + int(inputs[3]) + int(inputs[5]) + int(inputs[7]) + int(inputs[11]) + 10) % 26 - 12 == int(inputs[12])
     cond6 = z12 % 26 - 12 == int(inputs[12])
     m6 = 1 if cond6 else 26
     z13 = z12 // 26 * m6 + offset_input(12, inputs) * int(not cond6)
@@ -52,6 +55,7 @@ def check_model_number_unparsed(input):
     z14 = z13 // 26 * m7 + offset_input(13, inputs) * int(not cond7)
     zlist = [z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13, z14]
     return z14, zlist
+
 
 def check_model_number(input, rows):
     inputs = list(input)
@@ -111,7 +115,9 @@ def check_model_number(input, rows):
     counter += 1
     return z, zlist
 
+
 f = open("inputs\day24outputreal.txt", "a")
+
 
 def main():
     streamlit.set_page_config(layout="wide")
@@ -126,7 +132,7 @@ def main():
     number = ["1"] * 14
     options = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     for i in range(len(cols)):
-        number[i] = cols[i].selectbox(f"Number {i+1}", options=options, key=i)
+        number[i] = cols[i].selectbox(f"Number {i + 1}", options=options, key=i)
     total_num = "".join(number)
     score, zlist = check_model_number(total_num, rows)
     score2 = check_model_number(total_num, rows2)
@@ -147,9 +153,7 @@ def main():
     streamlit.write(f"Min num so far: {streamlit.session_state['min_num']}")
 
 
-
 if __name__ == '__main__':
     main()
 # biggest: 99995969919326
 # smallest: 48111514719111
-

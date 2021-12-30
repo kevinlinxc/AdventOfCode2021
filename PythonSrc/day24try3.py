@@ -1,4 +1,5 @@
-# In this attempt I try to loop from 1-9 so I can avoid the 0s. This was harder to start at a new number with.
+# In this attempt I try to loop from 1-9 so I can avoid the 0s. This was bad as I couldn't start with a different
+# number than 111111etc
 file1 = open('inputs\day24.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -68,6 +69,7 @@ def check_model_number(input):
         print(f"{input} is NOT a valid model number")
         return False
 
+
 file = open("inputs\day24output.txt", "a")
 
 valid_nums = ["9", "8", "7", "6", "5", "4", "3", "2", "1"]
@@ -85,9 +87,9 @@ for a in valid_nums:
                                             for l in valid_nums:
                                                 for m in valid_nums:
                                                     for n in valid_nums:
-                                                        string = a+b+c+d+e+f+g+h+i+j+k+l+m+n
+                                                        string = a + b + c + d + e + f + g + h + i + j + k + l + m + n
                                                         if check_model_number(string):
                                                             print(i)
                                                             file.write(str(i))
                                                             exit(0)
-# 11111143577935
+# reached 11111143577935

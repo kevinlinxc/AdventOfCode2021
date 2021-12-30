@@ -4,6 +4,7 @@ rows = [(line.strip()) for line in lines]
 print(rows)
 graph = {}
 import sys
+
 sys.setrecursionlimit(3500)
 for row in rows:
     split = row.split("-")
@@ -19,9 +20,10 @@ for row in rows:
 
 print(graph)
 
-visited = set()
 counter = 0
 good_paths = set()
+
+
 def list_of_strings_hashcode(list_of_strings):
     prime = 31
     result = 1
@@ -29,15 +31,15 @@ def list_of_strings_hashcode(list_of_strings):
         result = result * prime + hash(string)
     return result
 
-def printAllPathsUtil(start, dest, visited, path, can_visit_twice):
 
+def printAllPathsUtil(start, dest, visited, path, can_visit_twice):
     # Mark the current node as visited and store in path
     global counter
     if not start.isupper():
         if start == can_visit_twice:
             visited[start] = visited[start] + 1
         else:
-            visited[start]= 2
+            visited[start] = 2
     path.append(start)
 
     # If current vertex is same as destination, then print
@@ -57,16 +59,15 @@ def printAllPathsUtil(start, dest, visited, path, can_visit_twice):
             if visited[i] < 2:
                 printAllPathsUtil(i, dest, visited, path, can_visit_twice)
 
-
     # Remove current vertex from path[] and mark it as unvisited
     path.pop()
     if start == can_visit_twice:
-        visited[start]= visited[start]-1
+        visited[start] = visited[start] - 1
     else:
         visited[start] = 0
 
-def printAllPaths(start, dest, can_visit_twice):
 
+def printAllPaths(start, dest, can_visit_twice):
     # Mark all the vertices as not visited
     visited = {}
     for key in graph.keys():
@@ -79,7 +80,7 @@ def printAllPaths(start, dest, can_visit_twice):
     printAllPathsUtil(start, dest, visited, path, can_visit_twice)
 
 
-small_caves =  [key for key in graph.keys() if key.islower() and key not in ["start", "end"]]
+small_caves = [key for key in graph.keys() if key.islower() and key not in ["start", "end"]]
 for small_cave in small_caves:
     printAllPaths("start", "end", small_cave)
 print(counter)

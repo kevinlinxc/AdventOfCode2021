@@ -3,10 +3,11 @@ lines = file1.readlines()
 rows = [(list(line.strip())) for line in lines]
 
 print(rows)
-height = len(rows) -1
-width = len(rows[0])-1
+height = len(rows) - 1
+width = len(rows[0]) - 1
 
 from copy import deepcopy
+
 
 def move_right(rows):
     items_moved = 0
@@ -14,12 +15,13 @@ def move_right(rows):
     for rowindex, row in enumerate(rows):
         for colindex, item in enumerate(row):
             if item == ">":
-                rightindex = 0 if colindex == width else colindex+1
+                rightindex = 0 if colindex == width else colindex + 1
                 if row[rightindex] == ".":
                     items_moved += 1
                     rowscopy[rowindex][rightindex] = ">"
                     rowscopy[rowindex][colindex] = "."
     return items_moved, rowscopy
+
 
 def move_down(rows):
     items_moved = 0
@@ -27,7 +29,7 @@ def move_down(rows):
     for rowindex, row in enumerate(rows):
         for colindex, item in enumerate(row):
             if item == "v":
-                downindex = 0 if rowindex == height else rowindex+1
+                downindex = 0 if rowindex == height else rowindex + 1
                 if rows[downindex][colindex] == ".":
                     items_moved += 1
                     rowscopy[downindex][colindex] = "v"
@@ -48,10 +50,11 @@ def cycle(rows):
     items_moved += right_moves + down_moves
     return items_moved, rowsdown
 
+
 items_moved, rows = cycle(rows)
 counter = 1
 while items_moved != 0:
     items_moved, rows = cycle(rows)
     counter += 1
 print(counter)
-#334
+# 334

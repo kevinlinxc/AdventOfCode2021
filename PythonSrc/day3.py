@@ -1,3 +1,4 @@
+# Find the most common values in certain binary positions
 file1 = open('inputs\day3.txt', 'r')
 Lines = file1.readlines()
 print(Lines)
@@ -13,11 +14,11 @@ for item in stripped:
         if int(item[i]) == 0:
             zero_count[i] += 1
         else:
-            one_count[i] +=1
+            one_count[i] += 1
 print(one_count)
 print(zero_count)
-#scrappy finish
-print(int(b"000100011001",2))
-print(int(b"111011100110",2))
-print(281*3814)
-#1071734
+# scrappy finish
+print(int(b"000100011001", 2))
+print(int(b"111011100110", 2))
+print(281 * 3814)
+# 1071734

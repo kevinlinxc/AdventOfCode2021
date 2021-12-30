@@ -1,4 +1,6 @@
 # tags: hard, insert, exponential
+# Build Polymer Sequence using insertion rules. Day 2 is more steps, due to exponential nature,
+# I just needed to keep track of the pairs instead of the entire sequence
 file1 = open('inputs\day14.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
@@ -15,19 +17,20 @@ for i in range(2, len(rows)):
 
 def build(current):
     next = []
-    for i in range(0, len(current)-1):
+    for i in range(0, len(current) - 1):
         left = current[i]
-        right = current[i+1]
-        combined = left+right
-        next.append(left+insert_rules.get(combined, ""))
+        right = current[i + 1]
+        combined = left + right
+        next.append(left + insert_rules.get(combined, ""))
     next.append(current[-1])
     return "".join(next)
 
+
 epochs = 10
 for i in range(epochs):
-    print(f"After step {i+1}: {start}, {i}")
+    print(f"After step {i + 1}: {start}, {i}")
     start = build(start)
-    print(f"Length at step {i+1}: {len(start)}")
+    print(f"Length at step {i + 1}: {len(start)}")
 
 counter = list(start)
 ms_freq = max(counter, key=counter.count)
@@ -39,4 +42,4 @@ print(f"{ms_freq} occurs {max1} times")
 min1 = counter.count(ls_freq)
 print(f"{ls_freq} occurs {min1} times")
 print(max1 - min1)
-#3284
+# 3284

@@ -8,15 +8,16 @@ length = len(str(stripped[0]))
 
 zero_count = [0] * length
 
+
 def find_oxygen(stripped):
-    for i in range(length+1):
+    for i in range(length + 1):
         if len(stripped) == 1:
             return stripped[0]
         one_count = 0
         zero_count = 0
         for item in stripped:
             if item[i] == "0":
-                zero_count  += 1
+                zero_count += 1
             else:
                 one_count += 1
         newstripped = []
@@ -30,8 +31,9 @@ def find_oxygen(stripped):
                     newstripped.append(item)
         stripped = newstripped
 
+
 def find_scrubber(stripped):
-    for i in range(length+1):
+    for i in range(length + 1):
         if len(stripped) == 1:
             return stripped[0]
         one_count = 0
@@ -52,11 +54,11 @@ def find_scrubber(stripped):
                     newstripped.append(item)
         stripped = newstripped
 
+
 print(f'oxygen {find_oxygen(stripped)}')
 
 print(f'scrubber {find_scrubber(stripped)}')
-print(int(find_oxygen(stripped),2) * int(find_scrubber(stripped),2))
-
+print(int(find_oxygen(stripped), 2) * int(find_scrubber(stripped), 2))
 
 # print(int(b"000100011001",2))
 # print(int(b"111011100110",2))

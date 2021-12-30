@@ -1,13 +1,15 @@
+from collections import deque
 file1 = open('inputs\day10.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
 print(rows)
-from collections import deque
-points = { ")": 1,
-           "]": 2,
-           "}": 3,
-           ">": 4
-           }
+
+points = {")": 1,
+          "]": 2,
+          "}": 3,
+          ">": 4
+          }
+
 
 def matching_bracket(bracket):
     if bracket == "{":
@@ -20,6 +22,7 @@ def matching_bracket(bracket):
         return ">"
     else:
         return "alsjdlkfajsdf"
+
 
 start_brackets = {"(", "[", "{", "<"}
 whatever = deque()
@@ -36,7 +39,7 @@ for row in rows:
             next_to_pop = whatever.pop()
             expected = matching_bracket(next_to_pop)
             if bracket != expected:
-                bad_line=True
+                bad_line = True
                 break
     if not bad_line:
         while len(whatever) > 0:
@@ -45,5 +48,5 @@ for row in rows:
 
 sort_scores = sorted(scores)
 print(sort_scores)
-print(sort_scores[len(sort_scores)//2])
-#2192104158
+print(sort_scores[len(sort_scores) // 2])
+# 2192104158

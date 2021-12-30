@@ -1,3 +1,4 @@
+# Find overlaps in given lines. Part 2 is considering diagonal lines too
 file1 = open('inputs\day5.txt', 'r')
 Lines = file1.readlines()
 print(Lines)
@@ -18,23 +19,24 @@ for line in stripped:
     commands.append([x1, y1, x2, y2])
 print(f"max_x: {max_x}, max_y: {max_y}")
 
-arr = [[0 for j in range(max_y+1)] for i in range(max_x+1)]
+arr = [[0 for j in range(max_y + 1)] for i in range(max_x + 1)]
 
 print(arr)
 for command in commands:
-    if command[0] == command[2]: # x stays
+    if command[0] == command[2]:  # x stays
         first = min(command[1], command[3])
         second = max(command[1], command[3])
         for i in range(first, second + 1):
             print(f"Doing {command[0]}, {i}")
             arr[command[0]][i] += 1
-    elif command[1] == command[3]: # y stays same
+    elif command[1] == command[3]:  # y stays same
         first = min(command[0], command[2])
         second = max(command[0], command[2])
         for i in range(first, second + 1):
             print(f"Doing {i}, {command[1]}")
             arr[i][command[1]] += 1
-    else: pass
+    else:
+        pass
 print(arr)
 
 counter = 0
@@ -44,4 +46,4 @@ for i in arr:
             counter += 1
 
 print(f"Final answer: {counter}")
-#7142
+# 7142

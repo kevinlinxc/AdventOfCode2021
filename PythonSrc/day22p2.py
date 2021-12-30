@@ -2,6 +2,7 @@ file1 = open('inputs\day22.txt', 'r')
 lines = file1.readlines()
 rows = [(line.strip()) for line in lines]
 
+
 class transformation:
     def __init__(self, row):
         self.on = True if row.split(" ")[0] == "on" else False
@@ -40,16 +41,16 @@ points = {}
 
 for index, transformation in enumerate(transformations):
     print(f"Doing transformation {index}: {transformation}")
-    for x in range(transformation.xmin, transformation.xmax+1):
+    for x in range(transformation.xmin, transformation.xmax + 1):
         for y in range(transformation.ymin, transformation.ymax + 1):
             for z in range(transformation.zmin, transformation.zmax + 1):
-                unique_identifier = 2*x + 3*y + 5*z
+                unique_identifier = 2 * x + 3 * y + 5 * z
                 points[unique_identifier] = transformation.on
 
 counter = 0
 for point in points:
     if points[point]:
-        counter+=1
+        counter += 1
 
 print(counter)
-#644257
+# 644257

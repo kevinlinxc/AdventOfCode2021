@@ -17,7 +17,6 @@ def add_or_increment(dict, value, quantity=1):
 for char in start:
     add_or_increment(frequency, char)
 
-
 # collect the insertion rule pairs
 for i in range(2, len(rows)):
     line = rows[i]
@@ -30,10 +29,10 @@ pairs = {}
 
 
 def first_build(start):
-    for i in range(0, len(start)-1):
+    for i in range(0, len(start) - 1):
         left = start[i]
-        right = start[i+1]
-        combined = left+right
+        right = start[i + 1]
+        combined = left + right
         if combined in insert_rules:
             add_or_increment(pairs, combined)
 
@@ -48,8 +47,8 @@ def build(pairs, freq):
             first = pair[0]
             second = pair[1]
             pairs[pair] -= quantity
-            add_or_increment(pairs, first+insert, quantity)
-            add_or_increment(pairs, insert+second, quantity)
+            add_or_increment(pairs, first + insert, quantity)
+            add_or_increment(pairs, insert + second, quantity)
 
 
 epochs = 40
@@ -58,12 +57,12 @@ print(pairs)
 print(frequency)
 for i in range(epochs):
     build(pairs, frequency)
-    print(f"Frequency at step {i+1}: {frequency}")
+    print(f"Frequency at step {i + 1}: {frequency}")
 
 print(frequency)
 maximum = max(frequency.values())
 minimum = min(frequency.values())
 print(maximum)
 print(minimum)
-print(maximum-minimum)
-#4302675529689
+print(maximum - minimum)
+# 4302675529689
