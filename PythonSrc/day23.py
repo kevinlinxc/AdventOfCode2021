@@ -78,7 +78,11 @@ class AmphipodHallway:
             return True
 
         # disgusting function. Assumes front of rooms aren't blocked
-        def hallway_clear(self, spot, room):
+        # checks if you can get from a room to a spot
+        def hallway_clear(self, spot, room, exiting=False):
+            if exiting:
+                if self.sevenspots[spot] != nothing_char:
+                    return False
             if spot == leftestcubby:
                 if room == "A":
                     return self.hallway_clear_helper([leftcubby])
@@ -172,10 +176,8 @@ class AmphipodHallway:
                         room_string = ""
                         for room in ["A", "B", "C", "D"]:
                             if room == letter:
-                                if available == 1:
-                                    room_string += letter + self.rooms[room].bottom_slot
-                                else:
-                                    room_string += self.rooms[room].top_slot + letter
+                                index = available - 1
+                                room_string += self.rooms[room].state[:index] + letter + self.rooms[room].state[index+1:]
                             else:
                                 room_string += self.rooms[room].state
                         new_state = self.hallway.sevenspots[:i] + "." + self.hallway.sevenspots[i + 1:] + room_string
@@ -189,7 +191,7 @@ class AmphipodHallway:
             if wants_to_move:
                 crusty_letter = self.rooms[letter].state[index]
                 for i in range(0, 7):
-                    if self.hallway.hallway_clear(i, letter):
+                    if self.hallway.hallway_clear(i, letter, exiting=True):
                         room_string = ""
                         for room in ["A", "B", "C", "D"]:
                             if room == letter:
@@ -252,4 +254,5 @@ def print_hallway(path):
 for node in path.nodes:
     print("---------------------")
     print_hallway(node)
+print(path.total_cost)
 # 18501

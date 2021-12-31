@@ -18,6 +18,16 @@ room_distance = {"A": [2, 1, 1, 3, 5, 7, 8], "B": [4, 3, 1, 1, 3, 5, 6], "C": [6
                  "D": [8, 7, 5, 3, 1, 1, 2]}
 
 
+def print_hallway(path):
+    print("#############")
+    print("#" + path[0:2] + "." + path[2] + "." + path[3] + "." + path[4] + "." + path[5:7] + "#")
+    print("###" + path[7] + "#" + path[11] + "#" + path[15] + "#" + path[19] + "###")
+    print("  #" + path[8] + "#" + path[12] + "#" + path[16] + "#" + path[20] + "#  ")
+    print("  #" + path[9] + "#" + path[13] + "#" + path[17] + "#" + path[21] + "#  ")
+    print("  #" + path[10] + "#" + path[14] + "#" + path[18] + "#" + path[22] + "#  ")
+    print("  #########  ")
+
+
 class AmphipodHallway:
     # represents the state of the amphipod hallway, consisting of the hallway itself and the rooms
 
@@ -66,7 +76,10 @@ class AmphipodHallway:
             return True
 
         # disgusting function. Assumes front of rooms aren't blocked
-        def hallway_clear(self, spot, room):
+        def hallway_clear(self, spot, room, exiting=False):
+            if exiting:
+                if self.sevenspots[spot] != nothing_char:
+                    return False
             if spot == leftestcubby:
                 if room == "A":
                     return self.hallway_clear_helper([leftcubby])
@@ -135,11 +148,11 @@ class AmphipodHallway:
             return self.sevenspots
 
     def __init__(self, state_string):
-        assert len(state_string) == 15
+        assert len(state_string) == 23
         self.state_string = state_string
         self.hallway = self.hallway(state_string[0:7])
-        self.rooms = {"A": self.room(state_string[7:9], "A"), "B": self.room(state_string[9:11], "B"),
-                      "C": self.room(state_string[11:13], "C"), "D": self.room(state_string[13:15], "D")}
+        self.rooms = {"A": self.room(state_string[7:11], "A"), "B": self.room(state_string[11:15], "B"),
+                      "C": self.room(state_string[15:19], "C"), "D": self.room(state_string[19:23], "D")}
 
     def __repr__(self):
         return f"state: {self.state_string}, hallway: {self.hallway}, rooms: {self.rooms}"
@@ -160,10 +173,9 @@ class AmphipodHallway:
                         room_string = ""
                         for room in ["A", "B", "C", "D"]:
                             if room == letter:
-                                if available == 1:
-                                    room_string += letter + self.rooms[room].bottom_slot
-                                else:
-                                    room_string += self.rooms[room].top_slot + letter
+                                index = available - 1
+                                room_string += self.rooms[room].state[:index] + letter + self.rooms[room].state[
+                                                                                         index + 1:]
                             else:
                                 room_string += self.rooms[room].state
                         new_state = self.hallway.sevenspots[:i] + "." + self.hallway.sevenspots[i + 1:] + room_string
@@ -177,66 +189,65 @@ class AmphipodHallway:
             if wants_to_move:
                 crusty_letter = self.rooms[letter].state[index]
                 for i in range(0, 7):
-                    if self.hallway.hallway_clear(i, letter):
+                    if self.hallway.hallway_clear(i, letter, exiting=True):
                         room_string = ""
                         for room in ["A", "B", "C", "D"]:
                             if room == letter:
-                                if index == 0:
-                                    room_string += "." + self.rooms[room].bottom_slot
-                                else:
-                                    room_string += self.rooms[room].top_slot + "."
+                                room_string += self.rooms[room].state[:index] + "." + self.rooms[room].state[index + 1:]
                             else:
                                 room_string += self.rooms[room].state
                         new_state = self.hallway.sevenspots[:i] + crusty_letter + self.hallway.sevenspots[
                                                                                   i + 1:] + room_string
-
                         cost = (room_distance[letter][i] + 1 + index) * gas[crusty_letter]
                         valid_moves[new_state] = cost
         return valid_moves
 
 
-# start_state = ".......BACDBCDA" # example
-start_state = ".......BDCDCABA"  # actual
-end_state = ".......AABBCCDD"
+# start_state = ".......BDDACCBDBBACDACA" # example
+start_state = ".......BDDDCCBDCBAABACA"  # actual
+end_state = ".......AAAABBBBCCCCDDDD"
 start = AmphipodHallway(start_state)
-from collections import defaultdict
 
 adjacency = {start.state_string: []}
 last_adjacency = dict()
 visited = set(start.state_string)
-elements = [start.state_string]
-edges_added = -1
+
 graph = dijkstar.Graph()
-while edges_added != 0:
-    edges_added = 0
-    new_elements = []
-    for state in elements:
-        if state not in adjacency:
-            adjacency[state] = []
-        new_hallway = AmphipodHallway(state)
-        valid_states = new_hallway.get_valid_moves()
-        for move in valid_states:
-            if move not in adjacency[state]:
-                graph.add_edge(new_hallway.state_string, move, valid_states[move])
-                edges_added += 1
-                adjacency[state].append(move)
-                if move not in visited:
-                    new_elements.append(move)
-                    visited.add(move)
-    elements = new_elements
+
+
+def populate_graph(graph):
+    edges_added = -1
+    elements = [start.state_string]
+    global counter
+    while edges_added != 0:
+        edges_added = 0
+        new_elements = []
+        for state in elements:
+            if state not in adjacency:
+                adjacency[state] = []
+            new_hallway = AmphipodHallway(state)
+            valid_states = new_hallway.get_valid_moves()
+            for move in valid_states:
+                if move not in adjacency[state]:
+                    print(f"Adding edge {new_hallway.state_string}, {move}, {valid_states[move]}")
+                    counter += 1
+                    graph.add_edge(new_hallway.state_string, move, valid_states[move])
+                    edges_added += 1
+                    adjacency[state].append(move)
+                    if move not in visited:
+                        new_elements.append(move)
+                        visited.add(move)
+        elements = new_elements
+
+
+populate_graph(graph)
 # print(graph)
+print("Using dijkstar to find shortest path...")
 path = dijkstar.find_path(graph, start_state, end_state)
 print(path)
-
-
-def print_hallway(path):
-    print("#############")
-    print("#" + path[0:2] + "." + path[2] + "." + path[3] + "." + path[4] + "." + path[5:7] + "#")
-    print("###" + path[7] + "#" + path[9] + "#" + path[11] + "#" + path[13] + "###")
-    print("  #" + path[8] + "#" + path[10] + "#" + path[12] + "#" + path[14] + "#  ")
-    print("  #########  ")
-
 
 for node in path.nodes:
     print("---------------------")
     print_hallway(node)
+print(path.total_cost)
+# 50245
