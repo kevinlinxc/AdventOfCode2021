@@ -10,9 +10,13 @@ familiarity with C++ and Java.
 
 Personal Highlights:
 [Day 12](PythonSrc/day12.py): My first time using BFS in Python. Definitely worth reviewing before an interview
+
 Day 15: My first time using Dijkstra in Python, and the Dijkstar library
+
 Day 16: had me stuck for a week. Decided to implement the logic into one file instead of two like I originally tried
+
 Day 23: realizing I could use game state positions as nodes on a graph
+
 Day 24: using Streamlit to make a dashboard to easily test hypotheses with the model number validator
 
 
